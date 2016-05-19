@@ -108,6 +108,9 @@ grails:
         defaultScope: singleton
     converters:
         encoding: UTF-8
+        domain:
+            include:
+                class: true
     views:
         default:
             codec: html

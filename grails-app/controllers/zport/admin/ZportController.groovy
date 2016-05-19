@@ -17,11 +17,8 @@ class ZportController {
     def getjson() {
         //params.max = Math.min(max ?: 10, 100)
         def results =  Zport.list(params) as JSON
-        results = {ok: '1111'}
-        render(contentType: 'text/json') {[
-                'results': results,
-                'status': results ? "OK" : "Nothing present"
-        ]}
+        JSON.use('deep')
+        render Zport.getAll() as JSON
     }
 
     def show(Zport zport) {
