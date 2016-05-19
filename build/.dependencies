@@ -11,10 +11,12 @@ dependencies:
 - file:/Users/semianchuk/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-ehcache/4.3.11.Final/cea0e6aba102c00cf899bd547c338fcf54468433/hibernate-ehcache-4.3.11.Final.jar
 - file:/Users/semianchuk/.gradle/caches/modules-2/files-2.1/com.bertramlabs.plugins/asset-pipeline-grails/2.8.2/97bceaa633ee9f01b272e0b7fe9d960309ae43ab/asset-pipeline-grails-2.8.2.jar
 - file:/Users/semianchuk/.gradle/caches/modules-2/files-2.1/com.h2database/h2/1.4.191/dec3540178ea889b2871b0ed56db14bbec9cfdfc/h2-1.4.191.jar
+- file:/Users/semianchuk/.gradle/caches/modules-2/files-2.1/org.postgresql/postgresql/9.4.1208.jre7/368ab5589354e156a2aaa9c3bbb13524d76d0a65/postgresql-9.4.1208.jre7.jar
 - file:/Users/semianchuk/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-testing/3.1.6/79aee2ea91d7d7893dc53a90449c7c79e9ccf39e/grails-plugin-testing-3.1.6.jar
 - file:/Users/semianchuk/.gradle/caches/modules-2/files-2.1/org.grails.plugins/geb/1.0.1/e18899087e1202746f44193d6c7a1657afd9260e/geb-1.0.1.jar
 - file:/Users/semianchuk/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-htmlunit-driver/2.47.1/e4a31a8f8c8a36074a506449c1b476af86de4a58/selenium-htmlunit-driver-2.47.1.jar
 - file:/Users/semianchuk/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit/2.18/ec30f76601f7010abbc09cc8ec401cb183916371/htmlunit-2.18.jar
+- file:/Users/semianchuk/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-test-support/1.0.2-grails-2.4/7dc629f9b64652fc18b03e801ce85a31c1a7c088/grails-datastore-test-support-1.0.2-grails-2.4.jar
 - file:/Users/semianchuk/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.1.5/92353eb144695bba80b31f7bec4f36d871f230ac/logback-classic-1.1.5.jar
 - file:/Users/semianchuk/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.16/34e48073884704ac987d3d1a1ab9b60e62028a9/jcl-over-slf4j-1.7.16.jar
 - file:/Users/semianchuk/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.16/2d5b546c5557dcbf08c3a381d7dc9bd275a602c1/jul-to-slf4j-1.7.16.jar

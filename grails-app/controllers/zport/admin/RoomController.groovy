@@ -2,12 +2,12 @@ package zport.admin
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.converters.*
 
 @Transactional(readOnly = true)
 class RoomController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-    def identifier = null
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -19,7 +19,6 @@ class RoomController {
     }
 
     def create() {
-        identifier = params.zport.id
         respond new Room(params)
     }
 
@@ -38,11 +37,9 @@ class RoomController {
         }
 
         room.save flush:true
-        //println Zport.read(identifier).getRoom()
-/*
-        def zport =  new Zport(id: identifier).addToRoom(room).save(flush: true)
-*/
-
+        if(params.zport.id) {
+            Zport.get(params.zport.id).addToRoom(room).save(flush: true)
+        }
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'room.label', default: 'Room'), room.id])

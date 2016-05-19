@@ -28,6 +28,7 @@
             <g:form action="save">
                 <fieldset class="form">
                     <f:all bean="room"/>
+                    <input name="zport.id" type="hidden" value="${params.zport.id}">
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

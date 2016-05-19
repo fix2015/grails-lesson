@@ -4,7 +4,11 @@ class Zport {
 
     String title
     String type
-    Integer distance
+    String folder
+    String distance
+    String phone
+    String address
+    String description
     Boolean children = false
     Boolean conditioner = false
     Boolean dush = false
@@ -14,14 +18,23 @@ class Zport {
     Boolean wifi = false
     Boolean refrigeter = false
     Boolean swiming = false
-    Boolean lat = false
-    Boolean lng = false
+    String lat = false
+    String lng = false
 
     static hasMany = [room:Room]
 
+    static mapping = {
+        phone type: 'text'
+        address type: 'text'
+        description type: 'text'
+    }
     static constraints = {
         title nullable: false
         type inList: ['chast','pansionat','hotel','sanatoriy','otel','children','basi','room']
+        phone nullable: false
+        address nullable: false
+        description nullable: false
+        folder nullable: false
         distance nullable: false
         children nullable: false
         conditioner nullable: false

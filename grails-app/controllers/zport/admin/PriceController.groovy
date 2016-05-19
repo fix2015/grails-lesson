@@ -37,6 +37,10 @@ class PriceController {
 
         price.save flush:true
 
+        if(params.room.id){
+            Room.get(params.room.id).addToPrice(price).save(flush: true)
+        }
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'price.label', default: 'Price'), price.id])
