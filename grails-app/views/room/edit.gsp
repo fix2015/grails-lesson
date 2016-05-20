@@ -14,6 +14,16 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
+        <g:uploadForm action="upload">
+            <fieldset class="form">
+                <input type="file" name="file"/>
+            </fieldset>
+            <fieldset class="buttons">
+                <input type="hidden" name="id" value="${this.room.id}" />
+                <input type="hidden" name="folder" value="room" />
+                <g:submitButton name="upload" class="save" value="Upload" />
+            </fieldset>
+        </g:uploadForm>
         <div id="edit-room" class="content scaffold-edit" role="main">
             <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">

@@ -6,7 +6,7 @@ import grails.converters.*
 
 @Transactional(readOnly = true)
 class RoomController {
-
+    def FileService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -95,6 +95,21 @@ class RoomController {
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
+        }
+    }
+
+    def upload (Room room) {
+        def f =  request.getFile("file")
+        def webrootDir = servletContext.getRealPath("/")
+        def nameFile = f.getOriginalFilename()
+
+        if(!FileService.validationFile(f) || f.isEmpty()){
+            redirect(controller: "room", action: "edit", id: params.id)
+        }else{
+            new File(webrootDir,"images/${params.folder}/${params.id}").mkdirs()
+            File fileDest = new File(webrootDir,"images/${params.folder}/${params.id}/${nameFile}")
+            f.transferTo(fileDest)
+            redirect(controller: "room", action: "edit", id: params.id)
         }
     }
 

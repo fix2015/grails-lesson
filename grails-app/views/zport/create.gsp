@@ -25,13 +25,19 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
+
+            <g:uploadForm action="upload">
+                <fieldset class="form">
+                    <input type="file" name="file" data-id="okok" />
+                </fieldset>
+                <fieldset class="buttons">
+                    <g:submitButton name="upload" class="save" value="Upload" />
+                </fieldset>
+            </g:uploadForm>
+
             <g:form action="save">
                 <fieldset class="form">
                     <f:all bean="zport"/>
-%{--                    <div class="fieldcontain">
-                        <label for="room">Price</label><ul></ul><a href="/price/create?room.id=">Add room</a>
-                    </div>
-                    <f:all bean="room"/>--}%
                 </fieldset>
 
                 <fieldset class="buttons">
