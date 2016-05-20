@@ -11,7 +11,7 @@ class Room {
     Boolean refrigeter
     Boolean swiming
 
-    static hasMany = [price:Price]
+    static hasMany = [price:Price, image:Image]
 
     static constraints = {
         title nullable: false

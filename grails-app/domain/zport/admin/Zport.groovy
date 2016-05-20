@@ -21,7 +21,7 @@ class Zport {
     String lat = false
     String lng = false
 
-    static hasMany = [room:Room]
+    static hasMany = [room:Room, image:Image]
 
     static mapping = {
         phone type: 'text'
@@ -48,5 +48,6 @@ class Zport {
         lat nullable: false
         lng nullable: false
         room display: true
+        image display: true
     }
 }

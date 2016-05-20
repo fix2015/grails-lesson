@@ -13,6 +13,9 @@ class ZportService {
         println obj.a
         return obj
     }
+    def appendToImage() {
+        Zport.get(params.id).addToImage(image).save(flush: true)
+    }
     def recDataToDb() {
         String fileContents = new File('restaurants.json').text
         def fileArray = JSON.parse(fileContents)
