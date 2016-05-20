@@ -36,12 +36,13 @@ class ImageController {
             respond image.errors, view:'create'
             return
         }
-
-        image.save flush:true
-
         def f =  request.getFile("file")
         def webrootDir = servletContext.getRealPath("/")
         def nameFile = f.getOriginalFilename()
+        image.name = nameFile
+        image.save flush:true
+
+
 
         if(!FileService.validationFile(f) || f.isEmpty()){
             redirect(controller: "zport", action: "edit", id: params.zport.id)
