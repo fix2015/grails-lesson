@@ -3,6 +3,7 @@ package zport.admin
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.converters.*
+import grails.util.Holders
 
 @Transactional(readOnly = false)
 class ImageController {
@@ -37,34 +38,22 @@ class ImageController {
             return
         }
         def f =  request.getFile("file")
-        def webrootDir = servletContext.getRealPath("/")
         def nameFile = f.getOriginalFilename()
         image.name = nameFile
         image.save flush:true
-
-
+        params.name = nameFile
+        params.fotoFolderId = params.zport.id ? params.zport.id : params.room.id
 
         if(!FileService.validationFile(f) || f.isEmpty()){
             redirect(controller: "zport", action: "edit", id: params.zport.id)
         }else{
+            FileService.createFolderForFile(params);
+            f.transferTo(FileService.getDestination(params))
+
             if(params.folder == 'zport'){
-                new File(webrootDir,"images/${params.folder}/${params.zport.id}").mkdirs()
-                File fileDest = new File(webrootDir,"images/${params.folder}/${params.zport.id}/${nameFile}")
-                f.transferTo(fileDest)
-                params.name = nameFile
                 Zport.get(params.zport.id).addToImage(image).save(flush: true)
                 redirect(controller: "zport", action: "edit", id: params.zport.id)
-/*
-                ZportService.appendToImage(params.id, image);
-*/
             }else if(params.folder == 'room'){
-/*
-                RoomService.appendToImage(params.id, image);
-*/
-                new File(webrootDir,"images/${params.folder}/${params.room.id}").mkdirs()
-                File fileDest = new File(webrootDir,"images/${params.folder}/${params.room.id}/${nameFile}")
-                f.transferTo(fileDest)
-                params.name = nameFile
                 Room.get(params.room.id).addToImage(image).save(flush: true)
                 redirect(controller: "room", action: "edit", id: params.room.id)
             }else{

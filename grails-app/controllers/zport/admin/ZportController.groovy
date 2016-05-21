@@ -3,6 +3,7 @@ package zport.admin
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.converters.*
+import grails.util.Holders
 
 @Transactional(readOnly = false)
 class ZportController {
@@ -70,7 +71,6 @@ class ZportController {
             notFound()
             return
         }
-
         if (zport.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond zport.errors, view:'edit'
@@ -105,21 +105,6 @@ class ZportController {
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    def upload (Zport zport) {
-        def f =  request.getFile("file")
-        def webrootDir = servletContext.getRealPath("/")
-        def nameFile = f.getOriginalFilename()
-
-        if(!FileService.validationFile(f) || f.isEmpty()){
-            redirect(controller: "zport", action: "edit", id: params.id)
-        }else{
-            new File(webrootDir,"images/${params.folder}/${params.id}").mkdirs()
-            File fileDest = new File(webrootDir,"images/${params.folder}/${params.id}/${nameFile}")
-            f.transferTo(fileDest)
-            redirect(controller: "zport", action: "edit", id: params.id)
         }
     }
 

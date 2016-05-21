@@ -1,3 +1,6 @@
+import grails.util.Environment
+import grails.util.Holders
+
 dataSource {
     pooled = true
     jmxExport = true
@@ -5,8 +8,9 @@ dataSource {
     username = "postgres"
     password = "admin"
 }
+filesDir = "/Users/semianchuk/ideaProject/first-webapp-react/"
 environments {
-    development {
+    dev {
         dataSource {
             dbCreate = "update"
             username = 'postgres'

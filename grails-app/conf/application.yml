@@ -20,6 +20,7 @@ environments:
             username: postgres
             password: admin
             url: jdbc:postgresql://localhost:5432/test
+            filesDir: '/Users/semianchuk/ideaProject/first-webapp-react/image'
     test:
         dataSource:
             dbCreate: update
