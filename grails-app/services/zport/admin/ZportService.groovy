@@ -18,7 +18,7 @@ class ZportService {
         def f = Zport.getAll() as JSON
         def destination = Holders.config.filesDir+"restaurants.json"
         def file = new File(destination)
-        file.write(f.toString())
+        file.write(f.toString(), "UTF-8")
 
         return true
     }
