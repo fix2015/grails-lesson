@@ -8,6 +8,9 @@ dataSource {
     username = "postgres"
     password = "admin"
 }
+/*
+filesDir = "/Users/semianchuk/ideaProject/first-webapp-react/"
+*/
 filesDir = "/Users/semianchuk/ideaProject/first-webapp-react/"
 environments {
     dev {
