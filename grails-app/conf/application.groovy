@@ -11,7 +11,7 @@ dataSource {
 /*
 filesDir = "/Users/semianchuk/ideaProject/first-webapp-react/"
 */
-filesDir = "/Users/semianchuk/ideaProject/first-webapp-react/"
+filesDir = "/home/molot/zport/"
 environments {
     dev {
         dataSource {
