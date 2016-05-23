@@ -7,6 +7,7 @@ import grails.converters.*
 @Transactional(readOnly = true)
 class RoomController {
     def FileService
+    def ZportService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -40,6 +41,7 @@ class RoomController {
         if(params.zport.id) {
             Zport.get(params.zport.id).addToRoom(room).save(flush: true)
         }
+        ZportService.saveJSON();
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'room.label', default: 'Room'), room.id])
@@ -68,7 +70,7 @@ class RoomController {
         }
 
         room.save flush:true
-
+        ZportService.saveJSON();
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'room.label', default: 'Room'), room.id])
@@ -88,7 +90,7 @@ class RoomController {
         }
 
         room.delete flush:true
-
+        ZportService.saveJSON();
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'room.label', default: 'Room'), room.id])

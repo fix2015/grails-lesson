@@ -2,7 +2,7 @@ package zport.admin
 
 import grails.transaction.Transactional
 import grails.converters.*
-
+import grails.util.Holders
 import javax.xml.soap.SOAPMessage
 
 @Transactional
@@ -12,6 +12,15 @@ class ZportService {
         obj.a = '1'
         println obj.a
         return obj
+    }
+    def saveJSON(){
+        JSON.use('deep')
+        def f = Zport.getAll() as JSON
+        def destination = Holders.config.filesDir+"restaurants.json"
+        def file = new File(destination)
+        file.write(f.toString())
+
+        return true
     }
     def appendToImage() {
         Zport.get(params.id).addToImage(image).save(flush: true)
