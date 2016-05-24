@@ -121,7 +121,7 @@ class ImageController {
         }
 
         image.delete flush:true
-
+        ZportService.saveJSON();
 /*        request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'image.label', default: 'Image'), image.id])
