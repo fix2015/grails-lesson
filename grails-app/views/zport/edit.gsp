@@ -26,6 +26,11 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
+            <ul>
+            <g:each in="${this.zport.image}">
+                <li><a href="/image/show/${it.id}?zport.id=${this.zport.id}&type=zport">Удалять только от сюда ${it.name}</a></li>
+            </g:each>
+            </ul>
             <g:form resource="${this.zport}" method="PUT">
                 <g:hiddenField name="version" value="${this.zport?.version}" />
                 <fieldset class="form">

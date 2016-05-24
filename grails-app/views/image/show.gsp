@@ -22,6 +22,10 @@
             <f:display bean="image" />
             <g:form resource="${this.image}" method="DELETE">
                 <fieldset class="buttons">
+                    <input type="hidden" name="room.id" value="${params.room?.id}" />
+                    <input type="hidden" name="zport.id" value="${params.zport?.id}" />
+                    <input type="hidden" name="id" value="${params.id}" />
+                    <input type="hidden" name="type" value="${params.type}" />
                     <g:link class="edit" action="edit" resource="${this.image}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </fieldset>

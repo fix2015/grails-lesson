@@ -103,22 +103,32 @@ class ImageController {
 
     @Transactional
     def delete(Image image) {
-        prinln image as JSON
         if (image == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
+        if(params.type == 'zport'){
+            def zport = Zport.get(params.zport.id)
+            def pic = zport.image.find { it.id == params.id.toInteger() }
+            zport.removeFromImage(pic)
+            redirect(controller: "zport", action: "edit", id: params.zport.id)
+        }else{
+            def room = Room.get(params.room.id)
+            def pic = room.image.find { it.id == params.id.toInteger() }
+            room.removeFromImage(pic)
+            redirect(controller: "room", action: "edit", id: params.room.id)
+        }
 
         image.delete flush:true
 
-        request.withFormat {
+/*        request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'image.label', default: 'Image'), image.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
-        }
+        }*/
     }
 
     protected void notFound() {
