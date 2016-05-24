@@ -103,7 +103,7 @@ class ImageController {
 
     @Transactional
     def delete(Image image) {
-
+        prinln image as JSON
         if (image == null) {
             transactionStatus.setRollbackOnly()
             notFound()

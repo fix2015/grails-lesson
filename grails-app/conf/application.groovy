@@ -8,10 +8,10 @@ dataSource {
     username = "postgres"
     password = "admin"
 }
-/*
 filesDir = "/Users/semianchuk/ideaProject/first-webapp-react/"
-*/
+/*
 filesDir = "/home/molot/zport/"
+*/
 environments {
     dev {
         dataSource {
@@ -21,10 +21,10 @@ environments {
             url = "jdbc:postgresql://localhost:5432/test"
         }
     }
-    production {
+    prod {
         dataSource {
             dbCreate = 'validate'
-            url = 'jdbc:postgresql://localhost:5432/mydb'
+            url = 'jdbc:postgresql://localhost:5432/test'
         }
     }
 }

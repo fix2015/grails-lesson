@@ -16,7 +16,7 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: update
+            dbCreate: create-drop
             username: postgres
             password: admin
             url: jdbc:postgresql://localhost:5432/test
