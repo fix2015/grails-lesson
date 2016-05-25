@@ -20,6 +20,10 @@ class ZportController {
         ZportService.recDataToDb();
         render {}
     }
+    def savejson() {
+        ZportService.saveJSON();
+        render {}
+    }
 
     def getjson() {
         JSON.use('deep')
@@ -50,7 +54,6 @@ class ZportController {
         }
 
         zport.save flush:true
-        ZportService.saveJSON();
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'zport.label', default: 'Zport'), zport.id])
@@ -78,7 +81,6 @@ class ZportController {
         }
 
         zport.save flush:true
-        ZportService.saveJSON();
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'zport.label', default: 'Zport'), zport.id])
@@ -98,7 +100,6 @@ class ZportController {
         }
 
         zport.delete flush:true
-        ZportService.saveJSON();
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'zport.label', default: 'Zport'), zport.id])

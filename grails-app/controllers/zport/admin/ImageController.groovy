@@ -49,7 +49,6 @@ class ImageController {
         }else{
             FileService.createFolderForFile(params);
             f.transferTo(FileService.getDestination(params))
-            ZportService.saveJSON();
             if(params.folder == 'zport'){
                 Zport.get(params.zport.id).addToImage(image).save(flush: true)
                 redirect(controller: "zport", action: "edit", id: params.zport.id)
@@ -91,7 +90,6 @@ class ImageController {
         }
 
         image.save flush:true
-        ZportService.saveJSON();
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'image.label', default: 'Image'), image.id])
@@ -121,7 +119,6 @@ class ImageController {
         }
 
         image.delete flush:true
-        ZportService.saveJSON();
 /*        request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'image.label', default: 'Image'), image.id])
