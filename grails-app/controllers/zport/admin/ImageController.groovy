@@ -45,13 +45,10 @@ class ImageController {
         List fileList = request.getFiles('files') // 'files' is the name of the input
         fileList.each { f ->
             println 'filename: ' + f.getOriginalFilename()
-
-            image = new Image(params).save()
             def nameFile = f.getOriginalFilename()
-
             params.name = nameFile
+            image = new Image(params).save()
             params.fotoFolderId = params.zport.id ? params.zport.id : params.room.id
-
             if (!FileService.validationFile(f) || f.isEmpty()) {
 
             } else {
