@@ -26,9 +26,6 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:each in="${this.room.image}">
-                <li><a href="/image/show/${it.id}?room.id=${this.room.id}&type=room">Удалять только от сюда ${it.name}</a></li>
-            </g:each>
             <g:form resource="${this.room}" method="PUT">
                 <g:hiddenField name="version" value="${this.room?.version}" />
                 <fieldset class="form">
@@ -38,6 +35,16 @@
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
                 </fieldset>
             </g:form>
+            <h1>Картинки</h1>
+            <g:each in="${this.room.image}">
+                <li><a href="/image/show/${it.id}?room.id=${this.room.id}&type=room">Удалять только от сюда ${it.name}</a></li>
+            </g:each>
+            <a href="/image/create?room.id=${this.room.id}">Add Picture</a>
+            <h1>Цены</h1>
+            <g:each in="${this.room.price}">
+                <li><a href="/price/show/${it.id}?room.id=${this.room.id}">Удалять цены только от сюда ${it.mounth}</a></li>
+            </g:each>
+            <a href="/price/create?room.id=${this.room.id}">Add Room</a>
         </div>
     </body>
 </html>

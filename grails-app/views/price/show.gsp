@@ -22,6 +22,9 @@
             <f:display bean="price" />
             <g:form resource="${this.price}" method="DELETE">
                 <fieldset class="buttons">
+                    <input type="hidden" name="room.id" value="${params.room?.id}" />
+                    <input type="hidden" name="id" value="${params.id}" />
+                    <input type="hidden" name="type" value="${params.type}" />
                     <g:link class="edit" action="edit" resource="${this.price}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </fieldset>

@@ -87,16 +87,21 @@ class PriceController {
             notFound()
             return
         }
-
+        if(params.room.id){
+            def room = Room.get(params.room.id)
+            def pic = room.price.find { it.id == params.id.toInteger() }
+            room.removeFromPrice(pic)
+            redirect(controller: "room", action: "edit", id: params.room.id)
+        }
         price.delete flush:true
 
-        request.withFormat {
+/*        request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'price.label', default: 'Price'), price.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
-        }
+        }*/
     }
 
     protected void notFound() {

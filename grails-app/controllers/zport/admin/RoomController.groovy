@@ -87,14 +87,21 @@ class RoomController {
             return
         }
 
+        if(params.type == 'zport'){
+            def zport = Zport.get(params.zport.id)
+            def pic = zport.room.find { it.id == params.id.toInteger() }
+            zport.removeFromRoom(pic)
+            redirect(controller: "zport", action: "edit", id: params.zport.id)
+        }
+
         room.delete flush:true
-        request.withFormat {
+/*        request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'room.label', default: 'Room'), room.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
-        }
+        }*/
     }
 
     def upload (Room room) {

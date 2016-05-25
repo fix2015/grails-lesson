@@ -25,5 +25,7 @@ class Room {
         wifi nullable: false
         refrigeter nullable: false
         swiming nullable: false
+        image display: false
+        price display: false
     }
 }

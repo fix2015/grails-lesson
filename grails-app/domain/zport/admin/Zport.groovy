@@ -47,7 +47,7 @@ class Zport {
         swiming nullable: false
         lat nullable: false
         lng nullable: false
-        room display: true
-        image display: true
+        room display: false
+        image display: false
     }
 }

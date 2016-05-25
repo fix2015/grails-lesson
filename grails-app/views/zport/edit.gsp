@@ -26,11 +26,6 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <ul>
-            <g:each in="${this.zport.image}">
-                <li><a href="/image/show/${it.id}?zport.id=${this.zport.id}&type=zport">Удалять только от сюда ${it.name}</a></li>
-            </g:each>
-            </ul>
             <g:form resource="${this.zport}" method="PUT">
                 <g:hiddenField name="version" value="${this.zport?.version}" />
                 <fieldset class="form">
@@ -40,6 +35,19 @@
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
                 </fieldset>
             </g:form>
+            <ul>
+                <h1>Картинки</h1>
+                <g:each in="${this.zport.image}">
+                    <li><a href="/image/show/${it.id}?zport.id=${this.zport.id}&type=zport">Удалять картинки только от сюда ${it.name}</a></li>
+                </g:each>
+                <a href="/image/create?zport.id=${this.zport.id}">Add Image</a>
+                <h1>Комнаты</h1>
+                <g:each in="${this.zport.room}">
+                    <li><a href="/room/show/${it.id}?zport.id=${this.zport.id}&type=zport">Удалять комнаты только от сюда ${it.title}</a></li>
+                </g:each>
+                <a href="/room/create?zport.id=${this.zport.id}">Add Room</a>
+
+            </ul>
         </div>
     </body>
 </html>

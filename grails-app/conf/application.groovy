@@ -20,6 +20,15 @@ environments {
         }
         filesDir = "/Users/semianchuk/ideaProject/first-webapp-react/"
     }
+    test {
+        dataSource {
+            dbCreate = "update"
+            username = 'postgres'
+            password = 'admin'
+            url = "jdbc:postgresql://localhost:5432/test"
+        }
+        filesDir = "/Users/semianchuk/ideaProject/first-webapp-react/"
+    }
     production {
         dataSource {
             dbCreate = "update"

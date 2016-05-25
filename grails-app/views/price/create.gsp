@@ -28,6 +28,7 @@
             <g:form action="save">
                 <fieldset class="form">
                     <f:all bean="price"/>
+                    <input name="room.id" type="hidden" value="${params.room.id}">
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
