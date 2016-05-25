@@ -8,23 +8,25 @@ dataSource {
     username = "postgres"
     password = "admin"
 }
-filesDir = "/Users/semianchuk/ideaProject/first-webapp-react/"
-/*
-filesDir = "/home/molot/zport/"
-*/
+
+
 environments {
-    dev {
+    development {
         dataSource {
             dbCreate = "update"
             username = 'postgres'
             password = 'admin'
             url = "jdbc:postgresql://localhost:5432/test"
         }
+        filesDir = "/Users/semianchuk/ideaProject/first-webapp-react/"
     }
-    prod {
+    production {
         dataSource {
-            dbCreate = 'validate'
-            url = 'jdbc:postgresql://localhost:5432/test'
+            dbCreate = "update"
+            username = 'postgres'
+            password = 'admin'
+            url = "jdbc:postgresql://localhost:5432/test"
         }
+        filesDir = "/home/molot/zport/"
     }
 }
