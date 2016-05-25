@@ -4,6 +4,8 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.converters.*
 import grails.util.Holders
+import static grails.async.Promises.*
+
 
 @Transactional(readOnly = false)
 class ImageController {
@@ -26,6 +28,7 @@ class ImageController {
 
     @Transactional
     def save(Image image) {
+/*
         if (image == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -37,31 +40,39 @@ class ImageController {
             respond image.errors, view:'create'
             return
         }
-        def f =  request.getFile("file")
-        def nameFile = f.getOriginalFilename()
-        image.name = nameFile
-        image.save flush:true
-        params.name = nameFile
-        params.fotoFolderId = params.zport.id ? params.zport.id : params.room.id
+*/
 
-        if(!FileService.validationFile(f) || f.isEmpty()){
-            redirect(controller: "zport", action: "edit", id: params.zport.id)
-        }else{
-            FileService.createFolderForFile(params);
-            f.transferTo(FileService.getDestination(params))
-            if(params.folder == 'zport'){
-                Zport.get(params.zport.id).addToImage(image).save(flush: true)
-                redirect(controller: "zport", action: "edit", id: params.zport.id)
-            }else if(params.folder == 'room'){
-                Room.get(params.room.id).addToImage(image).save(flush: true)
-                redirect(controller: "room", action: "edit", id: params.room.id)
-            }else{
-                redirect(controller: "zport", action: "index")
+        List fileList = request.getFiles('files') // 'files' is the name of the input
+        fileList.each { f ->
+            println 'filename: ' + f.getOriginalFilename()
+
+            image = new Image(params).save()
+            def nameFile = f.getOriginalFilename()
+
+            params.name = nameFile
+            params.fotoFolderId = params.zport.id ? params.zport.id : params.room.id
+
+            if (!FileService.validationFile(f) || f.isEmpty()) {
+
+            } else {
+                FileService.createFolderForFile(params);
+                f.transferTo(FileService.getDestination(params))
+                if (params.folder == 'zport') {
+                    Zport.get(params.zport.id).addToImage(image).save(flush: true)
+                } else if (params.folder == 'room') {
+                    Room.get(params.room.id).addToImage(image).save(flush: true)
+                }
             }
-
         }
 
-
+/*        if (params.folder == 'zport') {
+            redirect(controller: "zport", action: "edit", id: params.zport.id)
+        } else if (params.folder == 'room') {
+            redirect(controller: "room", action: "edit", id: params.room.id)
+        } else {
+            redirect(controller: "zport", action: "index")
+        }
+        */
 /*        request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'image.label', default: 'Image'), image.id])

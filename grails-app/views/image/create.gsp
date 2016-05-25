@@ -26,10 +26,11 @@
             </ul>
             </g:hasErrors>
             <g:uploadForm action="save">
-                <fieldset class="form">
+%{--                <fieldset class="form">
                     <input type="file" name="file"/>
-                </fieldset>
+                </fieldset>--}%
                 <fieldset class="buttons">
+                    <input type="file" id="files" name="files" multiple="multiple" />
                     <input type="hidden" value="${request.getHeader('referer') }" name="lastVisited" />
                     <input type="hidden" name="zport.id" value="${params.zport?.id}" />
                     <input type="hidden" name="room.id" value="${params.room?.id}" />
